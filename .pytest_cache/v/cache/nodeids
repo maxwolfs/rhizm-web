@@ -1,0 +1,4 @@
+[
+  "tests.py::Unittest::test_another",
+  "tests.py::Unittest::test_card"
+]
