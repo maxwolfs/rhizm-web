@@ -2,7 +2,7 @@ from app import app
 from app import db
 from pony.orm import *
 from app import Card, Intercourse
-from flask import request, jsonify, abort
+from flask import request, jsonify, abort, render_template
 from hashlib import blake2b
 from datetime import datetime
 
@@ -12,8 +12,11 @@ from datetime import datetime
 
 @app.route('/')
 @app.route('/index')
+@db_session
 def index():
-    return "Hello World!"
+    intercourses = select(i for i in Intercourse)
+    return render_template('index.html',intercourses=intercourses)
+
 
 
 @app.route('/api/v1/intercourse', methods=['POST'])

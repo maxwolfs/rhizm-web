@@ -1,0 +1,9 @@
+<!doctype html>
+<title>Rhizomatic Machines</title>
+  <h1>Rhizomatic Machines</h1>
+  <h3>Rhizm Intercourses Database</h3>
+  <ul>
+        {% for i in intercourses %}
+        <li><b>Id:</b> {{ i }}, <b>Timestamp:</b> {{ i.timestamp }}, <b>Intercourse Partner I:</b> {{ i.first }}, <b>Intercourse Partner II:</b> {{ i.second }} <b>Verified:</b> {{ i.verified }}</li>
+        {% endfor %}
+  </ul>>
