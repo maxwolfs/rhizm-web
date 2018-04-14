@@ -1,0 +1,9 @@
+Kartenerstellung
+
+>>> import hashlib
+>>> hashlib.blake2b(b"numeri",digest_size=20).hexdigest()
+
+card1 = {"my_id" : "f049cd234b5a445766394925a2f0c46961d526f2", "secret_key" : "genesis"} #hash = '355cfa655e41054cbe6c411226924151f42a80f2'
+card2 = {"my_id" : "bd981973599153991c20a92552fd847a85614e77", "secret_key" : "exodus"} #hash = '2630de9da11b238294fcd7d4615e4650c4087986'
+card3 = {"my_id" : "d6c6a650b4271e10ba37e23169bade99c1f268af", "secret_key" : "levitikus"} #hash = '7faeea0c9eee1a54a222316536569346c9c8e91e'
+card4 = {"my_id" : "f40a36b458933a9d9a82009565b3a2639a2bc118", "secret_key" : "numeri"} #hash = '4921bfeefe0928bfe5addcfb247e51ceb5dc639b'

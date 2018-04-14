@@ -1,4 +1,5 @@
 [
-  "tests.py::Unittest::test_another",
-  "tests.py::Unittest::test_card"
+  "test.py::Unittest::test_card",
+  "test.py::Unittest::test_front_page_loads",
+  "test.py::Unittest::test_post_request_api"
 ]
