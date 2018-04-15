@@ -30,11 +30,16 @@ def intercourse():
     h = blake2b(digest_size=20)
     d = h.update(p)
     if c is not None and c.password == h.hexdigest():
-        intercourses = select(i for i in Intercourse if i.second == myid and i.first == otherid and i.verified == False)
-        if intercourses:
-            for i in intercourses:
+        print ('login successful')
+        existing_matches = select(i for i in Intercourse if i.second == myid and i.first == otherid and i.verified == False)
+        print ('Existing Matches:', existing_matches)
+        print (existing_matches.show())
+        if existing_matches:
+            for i in existing_matches:
+                print ('setting True')
                 i.verfied = True
         else: 
+            print ('creating Intercourse Request')
             Intercourse(timestamp = datetime.utcnow(),first = myid, second = otherid, verified = False)
     else: 
         return abort(403)
