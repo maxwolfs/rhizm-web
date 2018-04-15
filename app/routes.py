@@ -32,9 +32,9 @@ def intercourse():
     if c is not None and c.password == h.hexdigest():
         print ('login successful')
         existing_matches = select(i for i in Intercourse if i.second == myid and i.first == otherid and i.verified == False)
-        print ('Existing Matches:', existing_matches)
         print (existing_matches.show())
         if existing_matches:
+            print ('want to set True')
             for i in existing_matches:
                 print ('setting True')
                 i.verfied = True
