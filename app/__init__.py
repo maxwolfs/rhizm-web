@@ -1,8 +1,15 @@
+import os
+import sys
+import logging
 from flask import Flask
 from datetime import datetime
 from pony.orm import *
 
 app = Flask(__name__)
+
+if 'DYNO' in os.environ:
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.ERROR)
 
 db = Database()
 
