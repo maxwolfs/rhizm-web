@@ -30,9 +30,15 @@ def intercourse():
     h = blake2b(digest_size=20)
     d = h.update(p)
     if c is not None and c.password == h.hexdigest():
+        print ('login successful')
         intercourses = select(i for i in Intercourse if i.second == myid and i.first == otherid and i.verified == False)
-        if intercourses:
-            for i in Intercourse: i.verified = True
+        print ('Machted Intercourses:',intercourses)
+        print (type(intercourses))
+        if intercourses is not None: 
+            print ('Intercourses about to verify')
+            for i in intercourses:
+                print('setting True')
+                # i.verified = True
         else: 
             Intercourse(timestamp = datetime.utcnow(),first = myid, second = otherid, verified = False)
     else: 
