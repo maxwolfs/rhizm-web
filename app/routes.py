@@ -31,13 +31,19 @@ def intercourse():
     d = h.update(p)
     if c is not None and c.password == h.hexdigest():
         print ('login successful')
-        existing_matches = select(i for i in Intercourse if i.second == myid and i.first == otherid and i.verified == False)
+        existing_matches = select(i for i in Intercourse if i.second[:21] == myid[:21] and i.first[:21] == otherid[:21] and i.verified == False)
+        print("-----\nDEBUG:")
+        print(type(myid))
+        print(myid)
+        print(existing_matches)
+        print(existing_matches.count())
+        print("-----")
         if existing_matches:
             print (existing_matches.show())
             print ('want to set True')
             for i in existing_matches:
                 print ('setting True')
-                i.verfied = True
+                i.verified = True
         else: 
             print ('creating Intercourse Request')
             Intercourse(timestamp = datetime.utcnow(),first = myid, second = otherid, verified = False)
