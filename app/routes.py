@@ -56,9 +56,13 @@ def intercourse():
 @app.route('/api/v1/graph', methods=['GET'])
 @db_session
 def graph():
-    starting_point = int(request.args.get('starting_point'))
-    #print(starting_point)
-    new_intercourses = select(i for i in Intercourse if i.id > starting_point and i.verified == True)
-    response = {'data': [i.to_dict() for i in new_intercourses]}
-    #print (response)
+    starting_point = request.args.get('starting_point')
+    if (starting_point):
+        starting_point = int(request.args.get('starting_point'))
+        #print(starting_point)
+        new_intercourses = select(i for i in Intercourse if i.id > starting_point and i.verified == True)
+        response = {'data': [i.to_dict() for i in new_intercourses]}
+        #print (response)
+    else:
+        return abort(404)
     return jsonify(response)
