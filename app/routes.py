@@ -5,6 +5,7 @@ from app import Card, Intercourse
 from flask import request, jsonify, abort, render_template
 from hashlib import blake2b
 from datetime import datetime
+import json
 
 # {'my_id' : '123456', 'secret_key' : '123456', 'other_id' : '1234567'}
 
@@ -30,24 +31,34 @@ def intercourse():
     h = blake2b(digest_size=20)
     d = h.update(p)
     if c is not None and c.password == h.hexdigest():
-        print ('login successful')
+        # print ('login successful')
         existing_matches = select(i for i in Intercourse if i.second[:21] == myid[:21] and i.first[:21] == otherid[:21] and i.verified == False)
-        print("-----\nDEBUG:")
-        print(type(myid))
-        print(myid)
-        print(existing_matches)
-        print(existing_matches.count())
-        print("-----")
+        # print("-----\nDEBUG:")
+        # print(type(myid))
+        # print(myid)
+        # print(existing_matches)
+        # print(existing_matches.count())
+        # print("-----")
         if existing_matches:
-            print (existing_matches.show())
-            print ('want to set True')
+            # print (existing_matches.show())
+            # print ('want to set True')
             for i in existing_matches:
-                print ('setting True')
+                # print ('setting True')
                 i.verified = True
         else: 
-            print ('creating Intercourse Request')
+            # print ('creating Intercourse Request')
             Intercourse(timestamp = datetime.utcnow(),first = myid, second = otherid, verified = False)
     else: 
         return abort(403)
     commit()   
     return jsonify(data)
+
+@app.route('/api/v1/graph', methods=['GET'])
+@db_session
+def graph():
+    starting_point = int(request.args.get('starting_point'))
+    #print(starting_point)
+    new_intercourses = select(i for i in Intercourse if i.id > starting_point and i.verified == True)
+    response = {'data': [i.to_dict() for i in new_intercourses]}
+    #print (response)
+    return jsonify(response)
