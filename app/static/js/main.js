@@ -19,16 +19,16 @@ function setup() {
 
   setInterval(function() {
     getIntercoursesFromServer();
-  }, 10000);
+  }, 3000);
 }
 
 function draw() {
   background(backgroundColor);
   Pos.calculateMidpoint();
 
-  noStroke();
-  fill(textColor);
-  text("FPS: " + round(frameRate()), 20, 20);
+  // noStroke();
+  // fill(textColor);
+  // text("FPS: " + round(frameRate()), 20, 20);
 
   showNodes();
   computeNodes();
@@ -65,7 +65,7 @@ function getIntercoursesFromServerInitial() {
 
 function getIntercoursesFromServer() {
   loadJSON('/api/v1/graph?starting_point=0', jsonToIntercourses);
-  // loadJSON('test2.json', jsonToIntercourses);
+  // loadJSON('test.json', jsonToIntercourses);
 }
 
 function initialNodeSetup(json) {
@@ -199,7 +199,7 @@ class Node {
       }
     }
 
-    let smoothFactor = 0.97;
+    let smoothFactor = 0.99;
     this.smoothPosition.mult(smoothFactor);
     this.smoothPosition.add(createVector(this.position.x * (1 - smoothFactor), (this.position.y * (1 - smoothFactor))));
 
@@ -222,10 +222,10 @@ class Pos {
     let minY = Number.MAX_VALUE, maxY = Number.MIN_VALUE;
 
     for (let i = 0; i < nodes.length; i++) {
-      minX = min(nodes[i].position.x, minX);
-      maxX = max(nodes[i].position.x, maxX);
-      minY = min(nodes[i].position.y, minY);
-      maxY = max(nodes[i].position.y, maxY);
+      minX = min(nodes[i].smoothPosition.x, minX);
+      maxX = max(nodes[i].smoothPosition.x, maxX);
+      minY = min(nodes[i].smoothPosition.y, minY);
+      maxY = max(nodes[i].smoothPosition.y, maxY);
     }
 
     let x = (maxX - minX) / 2 + minX;
