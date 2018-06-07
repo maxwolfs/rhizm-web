@@ -30,17 +30,31 @@ p {
    CSS Grid Layout
    ==========================*/
 
-.container {
-  display: grid;
-  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
-  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+@media (min-width:800px) {
+  .container {
+    display: grid;
+    grid-template-columns: [first] 25% [line2] 50px [line3] auto [col4-start] 50px [five] 25% [end];
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+  }
 }
 
+@media (max-width:800px) {
+  .container {
+    display: grid;
+    grid-template-columns: [first] 5% [line2] 5px [line3] auto [col4-start] 5px [five] 5% [end];
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+  }
+}
 .item-a {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 5;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 /*

@@ -61,13 +61,13 @@ function showNodes() {
 }
 
 function getIntercoursesFromServerInitial() {
-  loadJSON('/api/v1/graph?starting_point=0', initialNodeSetup);
-  //loadJSON("static/js/test.json", initialNodeSetup);
+  //loadJSON('/api/v1/graph?starting_point=0', initialNodeSetup);
+  loadJSON("static/js/test.json", initialNodeSetup);
 }
 
 function getIntercoursesFromServer() {
-  loadJSON('/api/v1/graph?starting_point=0', jsonToIntercourses);
-  //loadJSON("static/js/test.json", jsonToIntercourses);
+  //loadJSON('/api/v1/graph?starting_point=0', jsonToIntercourses);
+  loadJSON("static/js/test.json", jsonToIntercourses);
 }
 
 function initialNodeSetup(json) {
