@@ -32,6 +32,10 @@ function draw() {
   // fill(textColor);
   // text("FPS: " + round(frameRate()), 20, 20);
 
+  if(nodes.length==0) {
+    text("Warten auf die Schöpfung...", windowWidth / 2 - 80, windowHeight / 2);
+  }  
+
   showNodes();
   computeNodes();
 }
