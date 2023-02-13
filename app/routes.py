@@ -18,8 +18,6 @@ def index():
     intercourses = select(i for i in Intercourse)
     return render_template('index.html',intercourses=intercourses)
 
-
-
 @app.route('/api/v1/intercourse', methods=['POST'])
 @db_session
 def intercourse():

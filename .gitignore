@@ -3,3 +3,5 @@
 /__pycache__
 .env
 .database.sqlite
+/pythonenv
+app/__pycache__
