@@ -18,6 +18,7 @@ Flask App is hosted on heroku.com. Blake2b is the hashing algorithm for ids and 
 
 ## how to run
 
+```terminal
 clone repo
 install python 3.6.5
 install pip
@@ -25,3 +26,4 @@ install pipenv
 $ pipenv shell
 $ pipenv install
 $ export FLASK_APP=app.py on UNIX and $ set FLASK_APP=app.py on Windows
+```
