@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "font";
-  src: url("static/fonts/font.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("../fonts/font.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 
 html {

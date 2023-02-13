@@ -1,7 +1,0 @@
-/venv
-/.vscode
-/__pycache__
-.env
-.database.sqlite
-/pythonenv
-app/__pycache__
